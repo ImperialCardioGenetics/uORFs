@@ -14,6 +14,9 @@ NB: this script is under active development and currently only works on SNVs
 
 (1) Files of all possible uAUG-creating and stop-removing variants used in the paper analysis
 
+- uAUG-creating_all_possible_annotated.txt
+- stop-removing_all_possible_annotated.txt
+
 (2) Classifications for all genes according to likelihood that uORF-pertubation is a important disease mechanism
 
 Genes were classified into nine categories according to the following logic:
