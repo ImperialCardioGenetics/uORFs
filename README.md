@@ -4,7 +4,7 @@ Data and code relating to Whiffin *et al*. 2019 Characterising the loss-of-funct
   
 ## Contents
 
-### uORF_annotator
+### uORF annotator
 
 A VEP plugin that annotates 5'UTR variants for predicted effects on translation
 
