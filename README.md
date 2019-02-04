@@ -10,7 +10,7 @@ A VEP plugin that annotates 5'UTR variants for predicted effects on translation
 
 NB: this script is under active development and currently only works on SNVs
 
-### Data files
+### data files
 
 (1) Files of all possible uAUG-creating and stop-removing variants used in the paper analysis
 
