@@ -1,8 +1,11 @@
-# uORF annotator
-# Description
+# 5' UTR annotator
 
-This is a VEP Plugin to annotate 5' UTR variants especically for variants creating AUG and disrupting stop codon;
+## Description
 
-# Usage
+A VEP Plugin to annotate 5' UTR variants specifically, variants that create upstream AUGs (uAUGs) and disrupt stop codons of upstream open reading frames (uORFs)
+
+Currently the script only annotates SNVs. We will update soon with a version that also annotates InDels.
+
+## Usage
 
 `./vep -i variants.vcf --plugin five_prime_UTR_annotator,uORF_starts_ends_GRCh37_PUBLIC.txt`
