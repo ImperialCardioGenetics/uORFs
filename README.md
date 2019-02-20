@@ -1,6 +1,6 @@
 # uORFs
 
-Data and code relating to Whiffin *et al*. 2019 Characterising the loss-of-function impact of 5' untranslated region variants in whole genome sequence data from 15,708 individuals [bioRxiv link].
+Data and code relating to Whiffin *et al*. 2019 Characterising the loss-of-function impact of 5' untranslated region variants in whole genome sequence data from 15,708 individuals [https://www.biorxiv.org/content/10.1101/543504v1].
   
 ## Contents
 
