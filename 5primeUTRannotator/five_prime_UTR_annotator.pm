@@ -83,12 +83,12 @@ use base qw(Bio::EnsEMBL::Variation::Utils::BaseVepPlugin);
     sub get_header_info {
 
 	$self->{_header_info} = {
-        #If the variant creates an ATG in the five prime UTR sequence
+	#If the variant creates an ATG in the five prime UTR sequence
         uAUG_KozakContext => "The surrounding Kozak sequence of the uAUG",
-	      uAUG_KozakStrength => "Strength of the surrounding Kozak consensus of the uAUG",
-	      uAUG_DistanceToCDS => 'The uAUG distance upstream of the main ORF coding sequence',
-	      uAUG_FrameWithCDS => 'Frame with respect to the main ORF coding sequence',
-	      uAUG_InframeStop => 'Whether there is an infFame stop codon with respect to the uAUG within the 5 prime UTR',
+        uAUG_KozakStrength => "Strength of the surrounding Kozak consensus of the uAUG",
+        uAUG_DistanceToCDS => 'The uAUG distance upstream of the main ORF coding sequence',
+        uAUG_FrameWithCDS => 'Frame with respect to the main ORF coding sequence',
+        uAUG_InframeStop => 'Whether there is an infFame stop codon with respect to the uAUG within the 5 prime UTR',
         uAUG_DistanceToInframeStop => 'The uAUG distance to the inFrame stop codon within the 5 prime UTR',
         uAUG_DistanceFromCap => 'Distance of uAUG from 5 prime mRNA cap',
         #If the variant disrupts the stop codon of an existing uORF
@@ -100,9 +100,9 @@ use base qw(Bio::EnsEMBL::Variation::Utils::BaseVepPlugin);
         uSTOP_KozakStrength => 'Strength of the surrounding Kozak consensus of the uAUG in the existing uORF',
         uSTOP_Evidence => 'Whether there is prior evidence of translation documented in sorfs.org',
         #If either is true
-		    existing_uORFs => 'The number of existing uORFs already within the 5 prime UTR',
-		    existing_oORFs => 'The number of existing oORFs already within the 5 prime UTR',
-		    existing_inframeORFs => 'The number of existing inFrame ORFs already within the 5 prime UTR',
+        existing_uORFs => 'The number of existing uORFs already within the 5 prime UTR',
+        existing_oORFs => 'The number of existing oORFs already within the 5 prime UTR',
+        existing_inframeORFs => 'The number of existing inFrame ORFs already within the 5 prime UTR',
         };
 		return $self->{_header_info};
     }
@@ -110,7 +110,7 @@ use base qw(Bio::EnsEMBL::Variation::Utils::BaseVepPlugin);
     sub run {
         my ($self, $tva) = @_;
 
-  #only annotate the effect if the variant is 5_prime_UTR_variant
+  #only annotate the effect if the variant is (1)5_prime_UTR_variant
 	return {} unless grep {$_->SO_term eq '5_prime_UTR_variant'}  @{$tva->get_all_OverlapConsequences};
 
 	#retrieve the variant info
@@ -163,9 +163,9 @@ use base qw(Bio::EnsEMBL::Variation::Utils::BaseVepPlugin);
 	);
 
 	my $creatingATG_effect = $self->creating_ATG(\%variant,\%UTR_info);
-  my $removingstop_effect = $self->removing_stop(\%variant,\%UTR_info);
-  my $existing_uORF = $self->count_number_ATG($five_prime_seq);
-	my $utr_effect ={ %$creatingATG_effect, %$removingstop_effect, %$existing_uORF};
+  	my $removingstop_effect = $self->removing_stop(\%variant,\%UTR_info);
+  	my $existing_uORF = $self->count_number_ATG($five_prime_seq);
+	my $utr_effect ={%$creatingATG_effect, %$removingstop_effect, %$existing_uORF};
 	return $utr_effect? $utr_effect: {};
  }
 
@@ -203,15 +203,15 @@ sub removing_stop{
     my %existing_uORF = %{$self->existing_uORF(\@sequence)};
 
     #return annotators
-    my $uSTOP_AltStop;
-    my $uSTOP_AltStopDownstreamDistance;
-    my $uSTOP_AltStopDistanceToCDS;
-    my $uSTOP_FrameWithStart;
-    my $uSTOP_KozakContext = '';
-    my $uSTOP_KozakStrength = 0;
-    my $current_kozak = '';
-  	my $current_kozak_strength = 0;
-  	my $uSTOP_evidence;
+    my $uSTOP_AltStop = "";
+    my $uSTOP_AltStopDistance = "";
+    my $uSTOP_AltStopDistanceToCDS = "";
+    my $uSTOP_FrameWithStart = "";
+    my $uSTOP_KozakContext = "";
+    my $uSTOP_KozakStrength = "";
+    my $current_kozak = "";
+    my $current_kozak_strength = "";
+    my $uSTOP_evidence = "";
 
     #indicate whether the variant disrupts a stop codon
     my $flag=0;
@@ -394,17 +394,17 @@ sub removing_stop{
     }
 
       my %effect = (
-		    "uSTOP_AltStop" => $uSTOP_AltStop,
-        "uSTOP_AltStopDistance" => $uSTOP_AltStopDistance,
-        "uSTOP_AltStopDistanceToCDS" => $uSTOP_AltStopDistanceToCDS,
-        "uSTOP_FrameWithCDS" => $uSTOP_FrameWithStart,
-        "uSTOP_KozakContext" => $uSTOP_KozakContext,
-        "uSTOP_KozakStrength" => $kozak_strength{$uSTOP_KozakStrength},
-        "uSTOP_Evidence" => $uSTOP_evidence,
-  );
+    "uSTOP_AltStop" => $uSTOP_AltStop,
+    "uSTOP_AltStopDistance" => $uSTOP_AltStopDistance,
+    "uSTOP_AltStopDistanceToCDS" => $uSTOP_AltStopDistanceToCDS,
+    "uSTOP_FrameWithCDS" => $uSTOP_FrameWithStart,
+    "uSTOP_KozakContext" => $uSTOP_KozakContext,
+    "uSTOP_KozakStrength" => $kozak_strength{$uSTOP_KozakStrength}? $kozak_strength{$uSTOP_KozakStrength}:$uSTOP_KozakStrength,
+    "uSTOP_Evidence" => $uSTOP_evidence,
+	);
       my $result=\%effect;
 
-	return $result;
+    return $result;
 }
 
 
@@ -436,13 +436,15 @@ sub removing_stop{
 	my @stop_pos = @{$self->get_stopcodon_pos(\@sequence)};
 
 	#return annotators
-	my $position_in_ATG;
-	my $dist_to_start;
+	my $position_in_ATG = "";
+	my $dist_to_start = "";
 	my $kozak_strength = "";
-	my $conseq;
-	my $InframeStop = "False";
-	my $n_ATG_UTR = 0;
-	my $dist_from_cap;
+	my $conseq = "";
+	my $InframeStop = "";
+	my $n_ATG_UTR = "";
+	my $dist_from_cap = "";
+    my $kozak = "";
+    my $dist = "";
 
 	#indicate whether the variant creats a ATG
 	my $flag;
@@ -498,7 +500,6 @@ sub removing_stop{
   ################################################################################
   #annotator 2: determine kozak context;
   ################################################################################
-  		my $kozak = '';
   		if ((($pos_A-3)>=0)&&($sequence[($pos_A+3)])){
   			$kozak = $sequence[($pos_A-3)].$sequence[($pos_A-2)].$sequence[$pos_A-1]."ATG".$sequence[$pos_A+3];
   		}
@@ -532,9 +533,9 @@ sub removing_stop{
   ################################################################################
   #annotator 4: Whether there is an inframe stop codon within the 5'UTR
   ################################################################################
-
+		$InframeStop = "False";
   		#get the distance to inframe stop codon
-  		my $dist = 'NA';
+  		
   		foreach my $met (@stop_pos){
   			#if the remainder of the distance to stop codon divided by three is non-zero, then it's out of frame.
   			if (($met-$pos_A) % 3){}
@@ -646,7 +647,7 @@ sub removing_stop{
   #annotator 4: Whether there is an inframe stop codon within the 5'UTR
   ################################################################################
 
-
+		$InframeStop = "False";
   		#get the distance to inframe stop codon
   		my $dist = 'NA';
   		foreach my $met (@stop_pos){
@@ -692,9 +693,9 @@ sub removing_stop{
       my @mes_pos = @{$self->get_stopcodon_pos(\@sequence)};
 
       my $atg_num = $self->get_ATG_pos(\@sequence);
-      my $inframe_stop_num = 0;
-      my $outofframe_atg_num = 0;
-      my $inframeORF_num = 0;
+      my $inframe_stop_num=0;
+      my $outofframe_atg_num=0;
+      my $inframeORF_num=0;
       foreach my $atg (@atg_pos){
         my $flag=0; #indicate whether there is a stop codon with respect to this ATG
         foreach my $mes (@mes_pos){
@@ -716,7 +717,7 @@ sub removing_stop{
       "existing_oORFs" => $outofframe_atg_num,
       "existing_inframeORFs" => $inframeORF_num,);
 
-      return \%existing_uORF;
+        return \%existing_uORF;
 
     }
 
