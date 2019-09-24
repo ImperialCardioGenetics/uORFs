@@ -90,7 +90,7 @@ use base qw(Bio::EnsEMBL::Variation::Utils::BaseVepPlugin);
         uAUG_FrameWithCDS => 'Frame with respect to the main ORF coding sequence',
         uAUG_InframeStop => 'Whether there is an infFame stop codon with respect to the uAUG within the 5 prime UTR',
         uAUG_DistanceToInframeStop => 'The uAUG distance to the inFrame stop codon within the 5 prime UTR',
-        uAUG_DistanceFromCap => 'Distance of uAUG from 5 prime mRNA cap',
+        uAUG_DistanceFrmCap => 'Distance of uAUG from 5 prime mRNA cap',
         #If the variant disrupts the stop codon of an existing uORF
         uSTOP_AltStop => 'Whether there is another stop codon in the uORF',
         uSTOP_AltStopDistance => 'The distance of alternative stop codon to the lost stop codon',
@@ -557,7 +557,7 @@ sub removing_stop{
         "uAUG_FrameWithCDS" => $conseq,
         "uAUG_InframeStop" => $InframeStop,
         "uAUG_DistanceToInframeStop" => $dist,
-        "uAUG_DistanceFromCap" => $dist_from_cap,
+        "uAUG_DistanceFrmCap" => $dist_from_cap,
       );
       $result=\%effect;
   	}
@@ -669,7 +669,7 @@ sub removing_stop{
     "uAUG_FrameWithCDS" => $conseq,
     "uAUG_InframeStop" => $InframeStop,
     "uAUG_DistanceToInframeStop" => $dist,
-    "uAUG_DistanceFromCap" => $dist_from_cap,
+    "uAUG_DistanceFrmCap" => $dist_from_cap,
   );
       $result=\%effect;
   	}
