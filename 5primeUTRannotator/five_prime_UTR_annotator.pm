@@ -88,8 +88,8 @@ use base qw(Bio::EnsEMBL::Variation::Utils::BaseVepPlugin);
         uAUG_KozakStrength => "Strength of the surrounding Kozak consensus of the uAUG",
         uAUG_DistanceToCDS => 'The uAUG distance upstream of the main ORF coding sequence',
         uAUG_FrameWithCDS => 'Frame with respect to the main ORF coding sequence',
-        uAUG_InframeStop => 'Whether there is an infFame stop codon with respect to the uAUG within the 5 prime UTR',
-        uAUG_DistanceToInframeStop => 'The uAUG distance to the inFrame stop codon within the 5 prime UTR',
+        uAUG_InframeStop => 'Whether there is an inframe stop codon with respect to the uAUG within the 5 prime UTR',
+        uAUG_DistanceToInframeStop => 'The uAUG distance to the inframe stop codon within the 5 prime UTR',
         uAUG_DistanceFrmCap => 'Distance of uAUG from 5 prime mRNA cap',
         #If the variant disrupts the stop codon of an existing uORF
         uSTOP_AltStop => 'Whether there is another stop codon in the uORF',
@@ -102,7 +102,7 @@ use base qw(Bio::EnsEMBL::Variation::Utils::BaseVepPlugin);
         #If either is true
         existing_uORFs => 'The number of existing uORFs already within the 5 prime UTR',
         existing_oORFs => 'The number of existing oORFs already within the 5 prime UTR',
-        existing_inframeORFs => 'The number of existing inFrame ORFs already within the 5 prime UTR',
+        existing_inframeORFs => 'The number of existing inframe ORFs already within the 5 prime UTR',
         };
 		return $self->{_header_info};
     }
