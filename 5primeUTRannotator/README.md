@@ -1,5 +1,7 @@
 # 5' UTR annotator
 
+We have upgraded the plugin. Please check out https://github.com/ImperialCardioGenetics/UTRannotator
+
 ## Description
 
 A VEP Plugin to annotate 5' UTR variants specifically, variants that create upstream AUGs (uAUGs) and disrupt stop codons of upstream open reading frames (uORFs)
