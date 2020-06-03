@@ -1,4 +1,4 @@
-# 5' UTR annotator
+# 5' UTR annotator(depleted)
 
 We have upgraded this plugin. To use the new plugin, please go to https://github.com/ImperialCardioGenetics/UTRannotator
 
