@@ -4,9 +4,9 @@ Data and code relating to Whiffin *et al*. 2019 Characterising the loss-of-funct
   
 ## Contents
 
-### UTRannotator(https://github.com/ImperialCardioGenetics/UTRannotator) 
+### [UTRannotator](https://github.com/ImperialCardioGenetics/UTRannotator)  
 
-A VEP plugin that annotates 5'UTR variants for predicted effects on translation
+UTRannotator is a VEP plugin that annotates 5'UTR variants for predicted effects on translation.
 
 You can download the plugin at https://github.com/ImperialCardioGenetics/UTRannotator.
 
